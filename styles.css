@@ -1,0 +1,127 @@
+:root {
+  --text: #202020;
+  --muted: #767676;
+  --line: #202020;
+  --background: #f7f6f1;
+  --button: #202020;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.changelog {
+  width: min(720px, 100%);
+  padding: clamp(2rem, 7vw, 4rem);
+  border: 2px solid var(--text);
+  border-radius: 1.5rem;
+  background-color: var(--white);
+  box-shadow: 8px 8px 0 var(--text);
+}
+
+.page-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.page-header p,
+time {
+  color: var(--muted);
+}
+
+.timeline {
+  position: relative;
+  list-style: none;
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 34%;
+  width: 2px;
+  background-color: var(--line);
+  content: "";
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 32% 1fr;
+  gap: 2rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.timeline-item::before {
+  position: absolute;
+  top: 0.35rem;
+  left: calc(34% - 0.45rem);
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  background-color: var(--white);
+  content: "";
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item p {
+  font-weight: 600;
+}
+
+.button {
+  display: block;
+  width: fit-content;
+  margin: 3rem auto 0;
+  padding: 0.85rem 1.2rem;
+  border-radius: 0.5rem;
+  background-color: var(--button);
+  color: var(--white);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #4b4b4b;
+}
+
+@media (max-width: 600px) {
+  .changelog {
+    box-shadow: 5px 5px 0 var(--text);
+  }
+
+  .timeline::before {
+    left: 0.4rem;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding-left: 2rem;
+  }
+
+  .timeline-item::before {
+    left: 0;
+  }
+}
